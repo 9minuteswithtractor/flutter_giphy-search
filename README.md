@@ -35,5 +35,5 @@ Requirements: ❓ ℹ️
     // tutorial_help : https://www.youtube.com/watch?v=akMH3UOvYu8
     // (as it was my first Flutter App i used tutorial)
 
-![Alt Text](https://drive.google.com/file/d/1i4lv2rLxr7iz1ughGt0_4YuyByFUu8Q2/view)
+![Alt Text](./other_search.png)
     
