@@ -7,6 +7,9 @@ void main() {
         appBar: AppBar(
           backgroundColor: const Color(0xFFFF3A46),
           centerTitle: true,
+          // leading: const CircleAvatar(
+          //   backgroundImage: AssetImage('assets/images/giphy_logo.png'),
+          // ),
           title: const Text(
             'searchable-giphy',
             style: TextStyle(
