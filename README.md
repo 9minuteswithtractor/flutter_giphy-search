@@ -1,5 +1,5 @@
 
-## chili-labs_task: 📲
+## 🌶_task: 📲
     Create an application to search for GIF images
     using Giphy API (https://developers.giphy.com/docs/api/endpoint#search).
 Requirements: ❓ ℹ️
