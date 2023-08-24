@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
 import 'giphy_demo.dart';
 
 void main() => runApp(const MyApp());
