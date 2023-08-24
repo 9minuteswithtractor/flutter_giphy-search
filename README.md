@@ -1,10 +1,13 @@
 
 ## chili-labs_task: 📲
-
-    Requirements: ❓ ℹ️
+    Create an application to search for GIF images
+    using Giphy API (https://developers.giphy.com/docs/api/endpoint#search).
+Requirements: ❓ ℹ️
 -[ ] `Implement "live search"` - i.e. request is sent in
  N milliseconds (for example 300) after
  the user has entered some input;
+
+    // references and helpers : https://docs.flutter.dev/ui
 
 -[ ] `Results` are displayed in the `list or grid` of items;
 
