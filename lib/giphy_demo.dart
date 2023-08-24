@@ -43,71 +43,88 @@ class _GiphyPageState extends State<GiphyPage> {
       ),
       body: Theme(
         data: ThemeData.dark(),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Center(
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          controller: controller,
-                          decoration: const InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFFFF3A46)),
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Center(
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            style: const TextStyle(
+                              fontSize: 22,
                             ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.cyan),
+                            controller: controller,
+                            decoration: const InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Color(0xFFFF3A46)),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.cyan),
+                              ),
+                              label: Text(
+                                'Search Giphy',
+                                style: TextStyle(
+                                  fontSize: 22,
+                                ),
+                              ),
                             ),
-                            label: Text('Search Giphy'),
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.black87),
+                                fixedSize: MaterialStateProperty.all<Size>(
+                                    Size(50, 50))),
+                            onPressed: () {
+                              fetchData(controller.text);
+                            },
+                            child: const Text(
+                              'GO!',
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    VxConditional(
+                      condition: data != null,
+                      builder: (context) => GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: context.isMobile ? 2 : 3),
+                        itemBuilder: (context, index) {
+                          final url =
+                              data[index]["images"]["fixed_height"]["url"];
+                          return Image.network(url).card.roundedSM.make();
+                        },
+                        itemCount: data.length,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.black87),
-                              fixedSize: MaterialStateProperty.all<Size>(
-                                  Size(50, 50))),
-                          onPressed: () {
-                            fetchData(controller.text);
-                          },
-                          child: Text('GO!'),
+                      fallback: (context) => const Text(
+                        '',
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.grey,
                         ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  VxConditional(
-                    condition: data != null,
-                    builder: (context) => GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: context.isMobile ? 2 : 3),
-                      itemBuilder: (context, index) {
-                        final url =
-                            data[index]["images"]["fixed_height"]["url"];
-                        return Text(url);
-                      },
-                      itemCount: data.length,
-                    ),
-                    fallback: (context) => const Text(
-                      'Nothing Found',
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ).h(context.percentHeight * 60),
-                ],
+                    ).h(context.percentHeight * 70),
+                  ],
+                ),
               ),
             ),
           ),
