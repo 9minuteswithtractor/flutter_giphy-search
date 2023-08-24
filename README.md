@@ -7,7 +7,8 @@ Requirements: ❓ ℹ️
  N milliseconds (for example 300) after
  the user has entered some input;
 
-    // references and helpers : https://docs.flutter.dev/ui
+    // references and helpers : https://docs.flutter.dev/ui,
+    // app-icon: https://icons8.com/icon/12513/google-web-search
 
 -[ ] `Results` are displayed in the `list or grid` of items;
 

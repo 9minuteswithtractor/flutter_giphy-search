@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
+import 'giphy_demo.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color(0xFFFF3A46),
-          centerTitle: true,
-          // leading: const CircleAvatar(
-          //   backgroundImage: AssetImage('assets/images/giphy_logo.png'),
-          // ),
-          title: const Text(
-            'searchable-giphy',
-            style: TextStyle(
-              fontFamily: 'CircularStdFont',
-              fontSize: 40,
-            ),
-          ),
-        ),
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  // The root Widget of the app
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Giphy World',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-    ),
-  );
+      home: GiphyPage(),
+    );
+  }
 }
