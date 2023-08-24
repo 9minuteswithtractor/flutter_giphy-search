@@ -14,15 +14,19 @@ class _GiphyPageState extends State<GiphyPage> {
   final TextEditingController controller = TextEditingController();
 
   var data;
-
+  bool showLoading = false;
   final String url =
       "https://api.giphy.com/v1/gifs/search?api_key=imv0MqAoW8tJ2RijqNF94vK5D4xk8mz2&limit=25&offset=0&rating=G&lang=en&q=";
+
   void fetchData(String searchInput) async {
+    showLoading = true;
     Uri uri = Uri.parse(url + searchInput);
 
     http.Response res = await http.get(uri);
     data = jsonDecode(res.body)["data"];
-    setState(() {});
+    setState(() {
+      showLoading = false;
+    });
 
     print(data);
   }
@@ -103,26 +107,33 @@ class _GiphyPageState extends State<GiphyPage> {
                     const SizedBox(
                       height: 20,
                     ),
-                    VxConditional(
-                      condition: data != null,
-                      builder: (context) => GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: context.isMobile ? 2 : 3),
-                        itemBuilder: (context, index) {
-                          final url =
-                              data[index]["images"]["fixed_height"]["url"];
-                          return Image.network(url).card.roundedSM.make();
-                        },
-                        itemCount: data.length,
-                      ),
-                      fallback: (context) => const Text(
-                        '',
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.grey,
+                    if (showLoading)
+                      CircularProgressIndicator().centered()
+                    else
+                      VxConditional(
+                        condition: data != null,
+                        builder: (context) => GridView.builder(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: context.isMobile ? 2 : 3),
+                          itemBuilder: (context, index) {
+                            final url =
+                                data[index]["images"]["fixed_height"]["url"];
+                            return Image.network(
+                              url,
+                              fit: BoxFit.cover,
+                            ).card.roundedSM.make();
+                          },
+                          itemCount: data.length,
                         ),
-                      ),
-                    ).h(context.percentHeight * 70),
+                        fallback: (context) => const Text(
+                          '',
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ).h(context.percentHeight * 70),
                   ],
                 ),
               ),

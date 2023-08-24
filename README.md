@@ -7,8 +7,6 @@ Requirements: ❓ ℹ️
  N milliseconds (for example 300) after
  the user has entered some input;
 
-    // references and helpers : https://docs.flutter.dev/ui,
-    // app-icon: https://icons8.com/icon/12513/google-web-search
 
 -[ ] `Results` are displayed in the `list or grid` of items;
 
@@ -29,3 +27,9 @@ Requirements: ❓ ℹ️
 -[ ] Unit tests (we don't expect 100% coverage but rather
      see how do you approach unit testing)
 
+
+#### notes:
+    // references and helpers : https://docs.flutter.dev/ui,
+    // app-icon: https://icons8.com/icon/12513/google-web-search
+    // tutorial_help : https://www.youtube.com/watch?v=akMH3UOvYu8
+    // (as it was my first Flutter App i used tutorial)
