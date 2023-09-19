@@ -14,7 +14,7 @@ class _GiphyPageState extends State<GiphyPage> {
   var data;
   bool showLoading = false;
   final String url =
-      "https://api.giphy.com/v1/gifs/search?api_key=imv0MqAoW8tJ2RijqNF94vK5D4xk8mz2&limit=25&offset=0&rating=G&lang=en&q=";
+      // your api ...
 
   void fetchData(String searchInput) async {
     showLoading = true;
